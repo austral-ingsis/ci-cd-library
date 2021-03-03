@@ -1,6 +1,8 @@
 name: Java CI
 
-on: [push]
+on:
+  - push
+  - workflow_dispatch
 
 jobs:
   build:
@@ -17,5 +19,5 @@ jobs:
       - name: Publish package
         run: gradle publish
         env:
-          GITHUB_ACTOR: jisoldi
+          GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
